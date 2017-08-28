@@ -1,0 +1,10 @@
+{
+  "root": "(?i)(^.+)(?=\\b(assetbuilds|asset_dev|shots|renders)\\b)",
+  "context": "\\b(assetbuilds|asset_dev|shots|renders)\\b",
+  "asset": "(?i)\\b(Ch|Pr|En)_\\w+\\b",
+  "version": "(?i)\\bv\\d{2}\\b",
+  "type": "(?i)\\b(((?P<chars>Ch)|(?P<props>Pr)|(?P<env>En))(?=_\\w+))|(chars|props|env)\\b",
+  "step": "(?i)(rig|model|texture|anim|comp|light)",
+  "filetype": "(?i)((?<=\\.)[\\.A-Za-z]+)+",
+  "shot": "(?i)Sc_\\d{3}"
+}

@@ -1,0 +1,12 @@
+# This is purely for visual clarity over JSON as YAML isn't natively supported in Maya
+ # Also includes paths that aren't used in the pipeline (such as artwork)
+
+"asset": "{root}/assetbuilds/{type}/{asset}/{asset}.{filetype}"
+"asset-art": "{root}/assetbuilds/{type}/{asset}/art/{asset}-{step}-{version}.{filetype}"
+"asset-version": "{root}/assetbuilds/{type}/{asset}/{step}/{asset}-{step}-{version}.{filetype}"
+"asset-working-version": "{root}/asset_dev/{type}/{asset}/{step}/{asset}-{step}-{version}.{filetype}"
+
+"shot-step": "{root}/shots/{shot}/{shot}-{step}.{filetype}"
+"shot-working-version": "{root}/shots/{shot}/{shot}-{step}-{version}.{filetype}"
+
+"render-version": "{root}/renders/{shot}/{step}/{shot}-{version}.{filetype}"
