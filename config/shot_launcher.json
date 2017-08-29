@@ -1,0 +1,28 @@
+{
+    "info": {
+        "name": "24 HR Shot Launcher",
+        "size": {
+            "y": 200,
+            "x": 200, 
+            "max": {
+                "x": 400
+            }
+        }
+    }, 
+    "objects": [
+        {
+            "type": "combobox",
+            "name": "shot",
+            "label": "shot"
+        },
+        {
+            "type": "combobox",
+            "values": [
+                "anim",
+                "light"
+            ],
+            "name": "step",
+            "label": "Department"
+        }
+    ]
+}

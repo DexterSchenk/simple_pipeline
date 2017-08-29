@@ -1,0 +1,33 @@
+{
+    "info": {
+        "name": "24 HR Asset Launcher",
+        "size": {
+            "y": 200,
+            "x": 300,
+            "max": {
+                "x": 500
+            }
+        }
+    },
+    "objects": [
+        {
+            "type": "combobox",
+            "name": "asset",
+            "label": "Assets"
+        },
+        {
+            "type": "combobox",
+            "name": "type",
+            "label": "Assets types"
+        },
+        {
+            "type": "combobox",
+            "values": [
+                "model",
+                "rig"
+            ],
+            "name": "step",
+            "label": "Department"
+        }
+    ]
+}
