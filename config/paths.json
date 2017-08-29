@@ -1,8 +1,10 @@
 {
+  "asset-root": "{root}/assetbuilds",
   "asset": "{root}/assetbuilds/{type}/{asset}/{asset}.{filetype}",
   "asset-version": "{root}/assetbuilds/{type}/{asset}/{step}/{asset}-{step}-{version}.{filetype}",
   "asset-working-version": "{root}/asset_dev/{type}/{asset}/{step}/{asset}-{step}-{version}.{filetype}",
 
+  "shot-root": "{root}/shots",
   "shot-step": "{root}/shots/{shot}/{shot}-{step}.{filetype}",
   "shot-working-version": "{root}/shots/{shot}/{shot}-{step}-{version}.{filetype}",
 
