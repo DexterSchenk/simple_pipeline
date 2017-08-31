@@ -29,6 +29,8 @@ def load_config(path):
 
 
 def get_path(env, *args):
+    if env == "PIPELINE_ROOT" and env not in os.environ:
+        os.environ['PIPELINE_ROOT'] = os.sep.join(re.split('[\\\/]', __file__)[:-2])
     return os.path.normpath(os.sep.join([os.environ[env]] + list(args)))
 
 
