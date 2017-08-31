@@ -31,7 +31,12 @@ def launch():
     template = core.utils.load_config('shot_launcher.json')
 
     # info = {'root': os.environ['root'], 'version': 'v01', 'filetype': 'ma'}
-    info = {'root': os.environ['root'], 'filetype': 'ma'}
+    info = {
+        'root': os.environ['root'],
+        'filetype': 'ma',
+        'context': 'shots',
+        'version': 'v00'
+    }
 
     shots = get_shots(info)
 

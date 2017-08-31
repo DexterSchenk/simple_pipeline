@@ -5,7 +5,10 @@ import re
 import _environment
 
 #todo: remove for production
-_environment.root = 'H:\work'
+tmp_path = r'C:\Users\Dexter\PycharmProjects\simple_pipeline'
+
+if os.path.exists(tmp_path):
+    _environment.root = 'H:\work'
 
 _environment.setup()
 
@@ -38,14 +41,18 @@ def launch():
         asset_widget.clear()
         asset_widget.addItems(assets[launcher.ui._get_value(type_widget)])
 
-
     template = core.utils.load_config('asset_launcher.json')
 
     # info = {'root': os.environ['root'], 'version': 'v01', 'filetype': 'ma'}
-    info = {'root': os.environ['root'], 'filetype': 'ma'}
+    info = {
+        'root': os.environ['root'],
+        'filetype': 'ma',
+        'context': 'asset_dev',
+        'version': 'v00'
+    }
 
     assets = get_assets(info)
-    print assets.keys()
+
     for i in template['objects']:
         if i['name'] == 'asset':
             # i['values'] = [inner for outer in assets.values() for inner in outer]
