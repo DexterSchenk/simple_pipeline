@@ -58,7 +58,7 @@ class GUI(QDialog):
             widget = self._get_component_widget(widget, component=None, widget_type=QLabel)
             if widget is None:
                 continue
-            max_width = max(widget.sizeHint().width(),max_width)
+            max_width = max(widget.sizeHint().width(), max_width)
 
         for widget in widgets:
             widget = self._get_component_widget(widget, component=None, widget_type=QLabel)
@@ -84,6 +84,8 @@ class GUI(QDialog):
             qt_obj = sun_wd.spinner(data)
         elif t == 'combobox':
             qt_obj = sun_wd.combobox(data)
+        elif t == 'checkbox':
+            qt_obj = sun_wd.checkbox(data)
         elif default_as_label:
             qt_obj = sun_wd.label(data)
             t = 'label'
@@ -135,7 +137,7 @@ class GUI(QDialog):
                     return widget
 
     def _get_value(self, widget):
-        for attr in ['text', 'value', 'currentText', ]:
+        for attr in ['isChecked', 'text', 'value', 'currentText', ]:
             try:
                 func = getattr(widget, attr)
                 return func()
@@ -151,6 +153,11 @@ class GUI(QDialog):
                 if attr == 'findText':
                     value = func(value)
                     func = getattr(widget, 'setCurrentIndex')
+                if attr == 'setValue':
+                    try:
+                        func(value)
+                    except TypeError:
+                        value = int(utils.Format.strip_non_decimal(value))
                 return func(value)
             except AttributeError:
                 continue
@@ -215,8 +222,10 @@ class SimpleUI(GUI):
         and call the run method to run. '''
 
     def __init__(self, template):
-        # create a Qt application --- every PyQt app needs one
-        self.qt_app = QApplication(sys.argv)
+        # create or attach to a Qt application --- every PyQt app needs one
+        self.qt_app = QApplication.instance()
+        if self.qt_app is None:
+            self.qt_app = QApplication(sys.argv)
 
         # Call the parent constructor on the current object
         QDialog.__init__(self, None)
