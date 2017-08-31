@@ -32,15 +32,23 @@ class Launcher(object):
 
     def launch_maya(self, scenepath):
         print "Opening {}".format(scenepath)
-        open_file = True
+        open_file = False
         if 'filetype' in templates.deconstruct(scenepath):
             if not os.path.exists(scenepath):
-                scenepath = scenepath.rsplit(os.sep , 1)[0]
+                scenepath = scenepath.rsplit(os.sep, 1)[0]
                 open_file = False
+                if not os.path.exists(scenepath):
+                    print 'Making directory:', scenepath
+                    os.makedirs(scenepath)
 
         print "Running Maya..."
         if open_file:
-            print "{} -file {}".format(os.environ['MAYA_EXE'], scenepath)
+            cmd = '"{}" -proj "{}" -file "{}"'.format(os.environ['MAYA_EXE'], os.environ['root'], scenepath)
         else:
-            print "{} -proj {}".format(os.environ['MAYA_EXE'], scenepath)
+            cmd = '"{}" -proj "{}" -command "workspace -bw \"{}\""'.format(os.environ['MAYA_EXE'], scenepath,
+                                                                           os.environ['MAYA_WORKSPACE'])
+            # cmd = '"{}" -proj "{}" -command "workspace {}"'.format(os.environ['MAYA_EXE'], os.environ['root'], scenepath)
+
+        print cmd
+        subprocess.Popen(cmd)
 
