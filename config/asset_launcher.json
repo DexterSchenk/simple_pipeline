@@ -13,12 +13,12 @@
         {
             "type": "combobox",
             "name": "asset",
-            "label": "Assets"
+            "label": "Asset"
         },
         {
             "type": "combobox",
             "name": "type",
-            "label": "Assets types"
+            "label": "Asset type"
         },
         {
             "type": "combobox",

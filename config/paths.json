@@ -1,12 +1,12 @@
 {
   "asset-root": "{root}/assetbuilds",
-  "asset": "{root}/assetbuilds/{type}/{asset}/{asset}.{filetype}",
-  "asset-version": "{root}/assetbuilds/{type}/{asset}/{step}/{asset}-{step}-{version}.{filetype}",
-  "asset-working-version": "{root}/asset_dev/{type}/{asset}/{step}/{asset}-{step}-{version}.{filetype}",
+  "assetbuilds": "{root}/assetbuilds/{type}/{asset}/{asset}.{filetype}",
+  "assetbuilds-version": "{root}/assetbuilds/{type}/{asset}/{step}/{asset}-{step}-{version}.{filetype}",
+  "asset_dev-version": "{root}/asset_dev/{type}/{asset}/{step}/{asset}-{step}-{version}.{filetype}",
 
   "shot-root": "{root}/shots",
-  "shot-step": "{root}/shots/{shot}/{shot}-{step}.{filetype}",
-  "shot-working-version": "{root}/shots/{shot}/{shot}-{step}-{version}.{filetype}",
+  "shots-step": "{root}/shots/{shot}/{shot}-{step}.{filetype}",
+  "shots-version": "{root}/shots/{shot}/{step}/{shot}-{step}-{version}.{filetype}",
 
   "render-version": "{root}/renders/{shot}/{step}/{shot}-{version}.{filetype}"
 }
