@@ -63,8 +63,9 @@ def publish():
     info['version'] = 'v01'
 
     version_path = core.templates.construct_path(info)
-    latest_version_path = core.utils.get_latest_version(version_path)
-    info = core.templates.deconstruct(latest_version_path)
+    if version_path:
+        latest_version_path = core.utils.get_latest_version(version_path)
+        info = core.templates.deconstruct(latest_version_path)
 
     check_scene(info, scenepath)
 
