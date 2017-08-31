@@ -38,8 +38,8 @@ def construct_path(info, template=None, get_best_path=True):
             logging.error(
                 "Found too many paths:\nInfo:\n{}\n\nPaths:\n{}".format(pprint.pformat(info), pprint.pformat(paths)))
         else:
-            if len(paths) > 1:
-                logging.warning("Built multiple paths, using longest path:\nPaths:\n{}".format(pprint.pformat(paths)))
+            # if len(paths) > 1:
+                # logging.warning("Built multiple paths, using longest path:\nPaths:\n{}".format(pprint.pformat(paths)))
             return paths[-1]
     else:
         logging.error("Failed to get any paths:\nInfo:\n{}".format(pprint.pformat(info)))
