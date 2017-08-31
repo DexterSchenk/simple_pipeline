@@ -1,0 +1,45 @@
+{
+    "info": {
+        "name": "24 HR Asset Publisher",
+        "size": {
+            "y": 200,
+            "x": 300,
+            "max": {
+                "x": 500
+            }
+        }
+    },
+    "objects": [
+        {
+            "readonly": 1,
+            "type": "text",
+            "name": "asset",
+            "label": "Asset"
+        },
+        {
+            "readonly": 1,
+            "type": "text",
+            "name": "type",
+            "label": "Asset type"
+        },
+        {
+            "readonly": 1,
+            "type": "text",
+            "name": "step",
+            "label": "Department"
+        },
+        {
+            "readonly": 1,
+            "value": 1,
+            "prefix": "v",
+            "type": "spinner",
+            "name": "version",
+            "label": "Version"
+        },
+        {
+            "type": "text",
+            "name": "message",
+            "label": "Publish message"
+        }
+    ]
+}

@@ -1,0 +1,39 @@
+{
+    "info": {
+        "name": "24 HR Shot Publisher",
+        "size": {
+            "y": 200,
+            "x": 200,
+            "max": {
+                "x": 400
+            }
+        }
+    },
+    "objects": [
+        {
+            "readonly": 1,
+            "type": "text",
+            "name": "shot",
+            "label": "shot"
+        },
+        {
+            "readonly": 1,
+            "type": "text",
+            "name": "step",
+            "label": "Department"
+        },
+        {
+            "readonly": 1,
+            "value": 1,
+            "prefix": "v",
+            "type": "spinner",
+            "name": "version",
+            "label": "Version"
+        },
+        {
+            "type": "text",
+            "name": "message",
+            "label": "Publish message"
+        }
+    ]
+}
