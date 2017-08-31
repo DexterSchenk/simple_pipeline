@@ -20,6 +20,21 @@ def _apply_validator(qt_obj, data):
         rx = QRegExpValidator(regex)
         qt_obj.setValidator(rx)
 
+
+###########################################################
+# Custom Widgets
+###########################################################
+
+class MySpinBox(QSpinBox):
+    def __init__(self, *args):
+        QSpinBox.__init__(self, *args)
+
+        self.setRange(0, 99)
+
+    def textFromValue(self, value):
+        return "%02d" % value
+
+
 ###########################################################
 # Widgets
 ###########################################################
@@ -32,6 +47,11 @@ def label(data):
 
 def text(data):
     qt_obj = QLineEdit(_get_field(data, 'text', str))
+
+    key = 'readonly'
+    if key in data:
+        qt_obj.setEnabled(not _get_field(data, key, int))
+
     if 'mask' in data.keys():
         if isinstance(qt_obj, QLineEdit):
             qt_obj.setInputMask(data['mask'])
@@ -40,7 +60,11 @@ def text(data):
 
 
 def spinner(data):
-    qt_obj = QSpinBox()
+    qt_obj = MySpinBox()
+
+    key = 'readonly'
+    if key in data:
+        qt_obj.setEnabled(not _get_field(data, key, int))
 
     # Values
     key = 'value'
@@ -63,14 +87,32 @@ def spinner(data):
     key = 'suffix'
     if key in data:
         qt_obj.setSuffix(_get_field(data, key, str))
+
     return qt_obj
 
 
 def combobox(data):
     qt_obj = QComboBox()
+
+    key = 'readonly'
+    if key in data:
+        qt_obj.setEnabled(not _get_field(data, key, int))
+
     key = 'values'
     if key in data:
         qt_obj.addItems(data[key])
 
     return qt_obj
 
+
+def checkbox(data):
+    qt_obj = QCheckBox(_get_field(data, 'checkbox', str))
+
+    key = 'readonly'
+    if key in data:
+        qt_obj.setEnabled(not _get_field(data, key, int))
+
+    key = 'value'
+    if key in data:
+        qt_obj.setChecked(data[key])
+    return qt_obj
