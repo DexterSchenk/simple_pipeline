@@ -16,6 +16,7 @@ def _setup_syspath():
     _set_env('PIPELINE_ROOT', pipeline_root)
     if pipeline_root not in sys.path:
         sys.path.append(pipeline_root)
+        os.environ['PYTHONPATH'] = "%PYTHONPATH%;{}".format(pipeline_root)
 
 
 def _setup_maya_shelves():
@@ -30,6 +31,7 @@ def _setup_envion_vars():
 def _create_workspace():
     source = os.path.join(pipeline_root, 'maya', 'workspace.mel')
     target = os.path.join(root, 'workspace.mel')
+    os.environ['MAYA_WORKSPACE'] = target
     copy = True
     if os.path.exists(target):
         if filecmp.cmp(source, target):
