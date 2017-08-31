@@ -25,8 +25,10 @@ def construct_path(info, template=None, get_best_path=True):
     for name, template in path_templates.items():
         try:
             p = template.format(**info)
+            template_keys = name.split('-')
             if p and not re.search('[{}]', p):
-                paths.append(os.path.normpath(p))
+                if info['context'] in template_keys:
+                    paths.append(os.path.normpath(p))
         except KeyError:
             pass
 
@@ -45,15 +47,18 @@ def construct_path(info, template=None, get_best_path=True):
 
 def deconstruct(string):
     info = {}
-    for name, regex in regex_templates.items():
-        result = re.search(regex, string)
-        if result:
-            if any(v for v in result.groupdict().values()):
-                for k, v in result.groupdict().items():
-                    if v:
-                        info.update({name: k})
-                        break
-            else:
-                info.update({name: result.group()})
-
+    try:
+        for name, regex in regex_templates.items():
+            result = re.search(regex, string)
+            if result:
+                if any(v for v in result.groupdict().values()):
+                    for k, v in result.groupdict().items():
+                        if v:
+                            info.update({name: k})
+                            break
+                else:
+                    info.update({name: result.group()})
+    except:
+        logging.error("Failed to deconstruct string: {}".format(string))
+        raise
     return info
