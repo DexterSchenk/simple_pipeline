@@ -4,6 +4,18 @@ import re
 import collections
 
 
+class Format:
+    # Regex formatting
+    numeric = re.compile(r'[^\d.]+')
+
+    def __init__(self):
+        pass
+
+    @classmethod
+    def strip_non_decimal(cls, string):
+        return cls.numeric.sub('', string)
+
+
 def load_json(path):
     path = os.path.normpath(path)
     with open(path, 'rb') as stream:
@@ -18,6 +30,29 @@ def load_config(path):
 
 def get_path(env, *args):
     return os.path.normpath(os.sep.join([os.environ[env]] + list(args)))
+
+
+def get_latest_version(path):
+    regexes = load_config('regexes.json')
+    regex = regexes['version']
+    # regex = regexes['version'].replace('\\b', '').replace('(?i)', '')
+    path = os.path.normpath(path)
+    dirpath = os.path.dirname(path)
+    filename = os.path.basename(path)
+    files = os.listdir(dirpath)
+    file_regex = re.sub(regex, regex.replace('\\', '\\\\'), filename)
+
+    versions = []
+    for f in files:
+        if re.search(file_regex, f):
+            versions.append(f)
+    if versions:
+        versions.sort()
+        version_number = int(Format.strip_non_decimal(re.search(regex, versions[-1]).group()))
+        latest_version = re.sub(regex, 'v{0:02}'.format(version_number + 1), filename)
+        return os.path.join(dirpath, latest_version)
+    else:
+        return path
 
 
 # Complex dictionary tools
