@@ -1,0 +1,18 @@
+{
+  "email": "notifications@email.com",
+  "password": "password",
+  "mailing_list": {
+    "production": [
+    "production.coordinators@email.com",
+    "technical@email.com"
+  ],
+    "assets": [
+      "asset.coordinators@email.com",
+      "asset.leads@email.com"
+    ],
+    "shots": [
+      "shot.coordinators@email.com",
+      "shot.leads@email.com"
+    ]
+  }
+}
